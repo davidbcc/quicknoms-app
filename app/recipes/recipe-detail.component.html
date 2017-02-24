@@ -1,0 +1,11 @@
+<ActionBar title="{{name}}" class="action-bar"></ActionBar>
+<StackLayout>
+    <Image [src]="image" height="25%" stretch="aspectFill"></Image>            
+        <ScrollView>
+            <StackLayout class="innerCard">
+                <Label horizontalAlignment="left" class="caption name" textWrap="true" [text]="notes"></Label>   
+                <SegmentedBar borderColor="#8AC215" selectedBackgroundColor="#8AC215" #sb [items]="recipeSteps" selectedIndex="0" (selectedIndexChange)="changeTab(sb.selectedIndex)"></SegmentedBar>
+                <Label class="name" horizontalAlignment="left" textWrap="true" [text]="procedure"></Label>   
+            </StackLayout>
+        </ScrollView>
+</StackLayout>
