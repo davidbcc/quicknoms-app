@@ -11,12 +11,14 @@ ActionBar {
 .name {
     margin:10
 }
+
 .title {
     font-weight: bold;
     font-size: 20;
     color: white;
     text-align: center;
 }
+
 .caption { 
     color: black;
     font-style: italic;
