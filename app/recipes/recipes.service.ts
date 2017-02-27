@@ -69,6 +69,11 @@ getRecipes(): Observable<any> {
 }
 
   publishUpdates() { 
+    this._allRecipes.sort(function(a, b){
+        if(a.Date < b.Date) return -1;
+        if(a.Date > b.Date) return 1;
+      return 0;
+    })
     this.recipes.next([...this._allRecipes]);
   }
 

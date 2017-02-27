@@ -7,7 +7,8 @@ export class Recipe {
         public Ingredients: string,
         public Method: string,
         public Notes: string,
-        public Tools: string
+        public Tools: string,
+        public Date: string
       )
     {}   
 }
