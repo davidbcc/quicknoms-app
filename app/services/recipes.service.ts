@@ -40,7 +40,9 @@ getRecipes(): Observable<any> {
     if (data) {
       for (let id in data) {        
         let result = (<any>Object).assign({id: id}, data[id]);
-          this._allRecipes.push(result);
+          if(result.Approved){
+            this._allRecipes.push(result);
+          }
       }
       this.publishUpdates();
     }
