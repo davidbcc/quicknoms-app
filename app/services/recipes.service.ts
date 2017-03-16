@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from "@angular/core";
-import { Recipe } from "./recipes";
+import { Recipe } from "../models/recipes";
 import firebase = require("nativescript-plugin-firebase");
 import {Observable} from 'rxjs/Observable';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
@@ -50,11 +50,11 @@ getRecipes(): Observable<any> {
   getMessage(): Observable<any>{
     return new Observable((observer:any) => {
       firebase.getRemoteConfig({
-      developerMode: true, 
-      cacheExpirationSeconds: 300,
-      properties: [{
-      key: "message",
-      default: "Welcome to QuickNoms!"
+        developerMode: true, 
+        cacheExpirationSeconds: 10,
+        properties: [{
+        key: "message",
+        default: "Welcome to QuickNoms!"
     }]
   }).then(
         function (result) {

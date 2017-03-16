@@ -5,7 +5,9 @@
             <StackLayout class="innerCard">
                 <Label horizontalAlignment="left" class="caption name" textWrap="true" [text]="notes"></Label>   
                 <SegmentedBar borderColor="#8AC215" selectedBackgroundColor="#8AC215" #sb [items]="recipeSteps" selectedIndex="0" (selectedIndexChange)="changeTab(sb.selectedIndex)"></SegmentedBar>
-                <Label class="name" horizontalAlignment="left" textWrap="true" [text]="procedure"></Label>   
+                <Label class="name" horizontalAlignment="left" textWrap="true" [text]="procedure"></Label>
+                <Button [text]="'fa-bullhorn' | fonticon" [class]="isSpeaking ? 'green pulse fa fa-bullhorn btnSpeak' : 'orange fa fa-bullhorn btnSpeak'"
+                    (tap)=speak(procedure)></Button>
             </StackLayout>
         </ScrollView>
 </StackLayout>

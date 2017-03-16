@@ -1,8 +1,13 @@
 import { Component, ChangeDetectionStrategy, OnInit, NgZone} from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { Recipe } from "./recipes";
-import { RecipesService } from "./recipes.service";
+import { Recipe } from "../models/recipes";
+import { RecipesService } from "../services/recipes.service";
 import { SegmentedBarItem } from "ui/segmented-bar";
+import { TNSTextToSpeech, SpeakOptions } from 'nativescript-texttospeech';
+import { TNSFontIconService } from 'nativescript-ngx-fonticon';
+var timer = require("timer");
+
+
 
 @Component({
     selector: "ns-details",
@@ -14,6 +19,8 @@ export class RecipeDetailComponent implements OnInit {
     recipe: Recipe;
     private sub: any;
     id: string;
+    public isSpeaking: boolean = false;
+    visibility: string;
     name: string;
     notes: string;
     image: string;
@@ -22,13 +29,16 @@ export class RecipeDetailComponent implements OnInit {
     ingredients: string;
     recipeSteps: Array<any>;
     public procedure: string;
+    private TTS: TNSTextToSpeech;
 
     constructor(
         private recipeService: RecipesService,
         private route: ActivatedRoute,
-        private ngZone: NgZone
+        private ngZone: NgZone,
+        private fonticon: TNSFontIconService
     ) {
         this.recipeSteps = [{title: 'Ingredients'}, { title: 'Tools' }, { title: 'Procedure' }];
+        this.TTS = new TNSTextToSpeech();
     }
 
     ngOnInit() {
@@ -80,6 +90,36 @@ export class RecipeDetailComponent implements OnInit {
                 break;            
          }
 
+    }
+
+    toggleSpeaking(){
+        if(this.isSpeaking || this.isSpeaking == undefined){
+            this.isSpeaking = false;
+            this.TTS.destroy();
+        }
+        else {
+            this.isSpeaking = true;
+        }
+        console.log(this.isSpeaking)
+    }
+    
+    speak(text: string){
+        
+        this.isSpeaking = true;
+
+        let speakOptions: SpeakOptions = {
+            text: text,
+            speakRate: 0.5,
+            finishedCallback: (() => {
+                //this.toggleSpeaking();
+                this.isSpeaking = false;
+            })   
+        }
+        this.TTS.speak(speakOptions);
+    }
+
+    pause(){
+        this.TTS.pause();
     }
 
 }

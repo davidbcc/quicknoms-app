@@ -3,9 +3,11 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { AppRoutingModule } from "./app.routing";
 import { AppComponent } from "./app.component";
 
-import { RecipesService } from "./recipes/recipes.service";
+import { RecipesService } from "./services/recipes.service";
 import { RecipesComponent } from "./recipes/recipes.component";
-import { RecipeDetailComponent } from "./recipes/recipe-detail.component";
+import { RecipeDetailComponent } from "./recipe-detail/recipe-detail.component";
+
+import {TNSFontIconModule, TNSFontIconService, TNSFontIconPipe, TNSFontIconPurePipe} from 'nativescript-ngx-fonticon';
 
 @NgModule({
     bootstrap: [
@@ -13,7 +15,10 @@ import { RecipeDetailComponent } from "./recipes/recipe-detail.component";
     ],
     imports: [
         NativeScriptModule,
-        AppRoutingModule
+        AppRoutingModule,
+        TNSFontIconModule.forRoot({
+            'fa': 'fonts/font-awesome.css'
+        })
     ],
     declarations: [
         AppComponent,
