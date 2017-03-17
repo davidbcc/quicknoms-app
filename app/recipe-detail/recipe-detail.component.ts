@@ -5,21 +5,17 @@ import { RecipesService } from "../services/recipes.service";
 import { SegmentedBarItem } from "ui/segmented-bar";
 import { TNSTextToSpeech, SpeakOptions } from 'nativescript-texttospeech';
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
-var timer = require("timer");
-
-
 
 @Component({
     selector: "ns-details",
     moduleId: module.id,
-    templateUrl: "./recipe-detail.component.html",
-    changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: "./recipe-detail.component.html"
 })
 export class RecipeDetailComponent implements OnInit {
     recipe: Recipe;
     private sub: any;
     id: string;
-    public isSpeaking: boolean = false;
+    isSpeaking: boolean = false;
     visibility: string;
     name: string;
     notes: string;
@@ -92,34 +88,17 @@ export class RecipeDetailComponent implements OnInit {
 
     }
 
-    toggleSpeaking(){
-        if(this.isSpeaking || this.isSpeaking == undefined){
-            this.isSpeaking = false;
-            this.TTS.destroy();
-        }
-        else {
-            this.isSpeaking = true;
-        }
-        console.log(this.isSpeaking)
-    }
     
     speak(text: string){
-        
         this.isSpeaking = true;
-
         let speakOptions: SpeakOptions = {
             text: text,
             speakRate: 0.5,
             finishedCallback: (() => {
-                //this.toggleSpeaking();
                 this.isSpeaking = false;
             })   
         }
-        this.TTS.speak(speakOptions);
-    }
-
-    pause(){
-        this.TTS.pause();
+		this.TTS.speak(speakOptions);
     }
 
 }
