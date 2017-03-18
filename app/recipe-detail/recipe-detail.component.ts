@@ -7,7 +7,7 @@ import { TNSTextToSpeech, SpeakOptions } from 'nativescript-texttospeech';
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 
 @Component({
-    selector: "ns-details",
+    selector: "recipe-detail",
     moduleId: module.id,
     templateUrl: "./recipe-detail.component.html"
 })

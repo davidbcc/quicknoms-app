@@ -14,13 +14,13 @@ export class RecipesService {
 recipes: BehaviorSubject<Array<Recipe>> = new BehaviorSubject([]);
 private _allRecipes: Array<Recipe> = [];
 
-getRecipes(): Observable<any> {
+getRecipes(category: string): Observable<any> {
     return new Observable((observer: any) => {
       let path = 'Recipes';
       
         let onValueEvent = (snapshot: any) => {
           this.ngZone.run(() => {
-            let results = this.handleSnapshot(snapshot.value);
+            let results = this.handleSnapshot(snapshot.value, category);
              observer.next(results);
           });
         };
@@ -34,13 +34,13 @@ getRecipes(): Observable<any> {
     }).share();
   }
 
-  handleSnapshot(data: any) {
+  handleSnapshot(data: any, category:string) {
     //empty array, then refill and filter
     this._allRecipes = [];
     if (data) {
       for (let id in data) {        
         let result = (<any>Object).assign({id: id}, data[id]);
-          if(result.Approved){
+          if(result.Approved && result.Category == category){
             this._allRecipes.push(result);
           }
       }

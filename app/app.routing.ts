@@ -4,10 +4,11 @@ import { Routes } from "@angular/router";
 
 import { RecipesComponent } from "./recipes/recipes.component";
 import { RecipeDetailComponent } from "./recipe-detail/recipe-detail.component";
+import { HomeComponent } from "./home/home.component";
 
 const routes: Routes = [
-    { path: "", redirectTo: "/recipes", pathMatch: "full" },
-    { path: "recipes", component: RecipesComponent },
+    { path: "", component: HomeComponent, pathMatch: "full" },
+    { path: "recipes/:category", component: RecipesComponent },
     { path: "recipe/:id", component: RecipeDetailComponent },
 ];
 

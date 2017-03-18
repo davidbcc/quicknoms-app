@@ -1,13 +1,9 @@
 <ActionBar title="" class="action-bar">
-    <Image src="res://logo" width="100" height="100"></Image>
+    <Label [text]="title"></Label>
 </ActionBar>
 
 <ScrollView class="green">
-    <WrapLayout horizontalAlignment="center">
-        <GridLayout rows="*,*">
-            <Label row="0" class="banner" textWrap="true" [text]="message$ | async"></Label>           
-            <Label row="1" class="title" textWrap="true" text="5 ingredients. 15 minutes. Minimal setup. Recipes for all!"></Label>
-        </GridLayout>      
+    <WrapLayout horizontalAlignment="center">      
         <StackLayout style="margin-left: 10" class="card" width="45%" *ngFor="let recipe of (recipes$ | async)">
             <StackLayout horizontalAlignment="center" (tap)="goToRecipe(recipe.id)">
                 <Image [src]="recipe.Image"></Image>            

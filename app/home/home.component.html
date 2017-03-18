@@ -1,0 +1,39 @@
+<ActionBar title="QuickNoms" class="action-bar"></ActionBar>
+
+<ScrollView>
+   <StackLayout>
+        <GridLayout class="green" rows="*,*,auto">
+            <Label row="0" class="banner" textWrap="true" [text]="message$ | async"></Label>           
+            <Label row="1" class="title" textWrap="true" text="5 ingredients. 15 minutes. Minimal setup. Recipes for all!"></Label>
+            <Image row="2" src="res://logo" width="100" height="100"></Image>
+        </GridLayout>      
+        <StackLayout>
+            <GridLayout rows="*,*,*" columns="*,*">
+                <StackLayout row="0" col="0" class="homecard">
+                    <Image  src="~/images/meat.png" (tap)="goToCategory('meat')"></Image>
+                    <Label class="name" horizontalAlignment="center" textWrap="true" text="Meat Recipes"></Label>
+                </StackLayout>
+                 <StackLayout row="0" col="1" class="homecard">
+                    <Image src="~/images/soupssalads.png" (tap)="goToCategory('soupssalads')"></Image>
+                  <Label class="name" horizontalAlignment="center" textWrap="true" text="Soups and Salads"></Label>
+                </StackLayout>
+                <StackLayout row="1" col="0" class="homecard">
+                    <Image src="~/images/vegetarian.png" (tap)="goToCategory('vegetarian')"></Image>
+                    <Label class="name" horizontalAlignment="center" textWrap="true" text="Vegetarian Recipes"></Label>
+                 </StackLayout>
+                  <StackLayout row="1" col="1" class="homecard">
+                      <Image src="~/images/snacks.png" (tap)="goToCategory('snacks')"></Image>
+                      <Label class="name" horizontalAlignment="center" textWrap="true" text="Snacks"></Label>
+                  </StackLayout>
+                  <StackLayout row="2" col="0" class="homecard">
+                    <Image src="~/images/desserts.png" (tap)="goToCategory('desserts')"></Image>
+                    <Label class="name" horizontalAlignment="center" textWrap="true" text="Desserts"></Label>
+                  </StackLayout>
+                  <StackLayout row="2" col="1" class="homecard">
+                    <Image src="~/images/extras.png" (tap)="goToCategory('everythingelse')"></Image>            
+                    <Label class="name" horizontalAlignment="center" textWrap="true" text="Everything Else"></Label>
+                  </StackLayout>
+            </GridLayout>
+        </StackLayout>           
+   </StackLayout>
+</ScrollView>
