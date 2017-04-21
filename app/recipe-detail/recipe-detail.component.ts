@@ -33,7 +33,14 @@ export class RecipeDetailComponent implements OnInit {
         private ngZone: NgZone,
         private fonticon: TNSFontIconService
     ) {
-        this.recipeSteps = [{title: 'Ingredients'}, { title: 'Tools' }, { title: 'Procedure' }];
+        //this.recipeSteps = [{title: 'Ingredients'}, { title: 'Tools' }, { title: 'Procedure' }];
+        let firstItem = new SegmentedBarItem();
+        let secondItem = new SegmentedBarItem();
+        let thirdItem = new SegmentedBarItem();
+        firstItem.title = "Ingredients";
+        secondItem.title = "Tools";
+        thirdItem.title = "Procedure";
+        this.recipeSteps = [ firstItem, secondItem, thirdItem ];
         this.TTS = new TNSTextToSpeech();
     }
 

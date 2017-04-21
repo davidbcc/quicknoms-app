@@ -3,7 +3,7 @@
     <Image [src]="image" height="25%" stretch="aspectFill"></Image>            
         <StackLayout class="innerCard">
             <Label horizontalAlignment="left" class="caption name" textWrap="true" [text]="notes"></Label>   
-            <SegmentedBar borderColor="#8AC215" selectedBackgroundColor="#8AC215" #sb [items]="recipeSteps" selectedIndex="0" (selectedIndexChange)="changeTab(sb.selectedIndex)"></SegmentedBar>
+            <SegmentedBar #sb [items]="recipeSteps" selectedIndex="0" (selectedIndexChange)="changeTab(sb.selectedIndex)"></SegmentedBar>
             <StackLayout verticalAlignment="top">
                 <ScrollView height="75%" verticalAlignment="top">
                     <Label class="name" verticalAlignment="top" horizontalAlignment="left" textWrap="true" [text]="procedure"></Label>
