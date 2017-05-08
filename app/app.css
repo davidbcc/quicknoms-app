@@ -2,12 +2,6 @@ ActionBar {
     background-color: #650100;
     color: white;
 }
-
-SegmentedBar {
-    selected-background-color: #8AC215;
-    border-color: #8AC215;
-}
-
 /* UI elements */
 
 .banner {
