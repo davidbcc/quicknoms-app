@@ -29,6 +29,10 @@ ActionBar {
     text-align: center;
 }
 
+.bar {
+    font-size: 10;
+}
+
 /* cards */
 
 .card {
