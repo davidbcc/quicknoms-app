@@ -8,6 +8,7 @@ import { RecipesService } from "./services/recipes.service";
 import { RecipesComponent } from "./recipes/recipes.component";
 import { RecipeDetailComponent } from "./recipe-detail/recipe-detail.component";
 import { HomeComponent } from "./home/home.component";
+import { RecipeSearchComponent } from "./recipe-search/recipe-search.component";
 
 import {TNSFontIconModule, TNSFontIconService, TNSFontIconPipe, TNSFontIconPurePipe} from 'nativescript-ngx-fonticon';
 
@@ -26,6 +27,7 @@ import {TNSFontIconModule, TNSFontIconService, TNSFontIconPipe, TNSFontIconPureP
         AppComponent,
         HomeComponent,
         RecipesComponent,
+        RecipeSearchComponent,
         RecipeDetailComponent
     ],
     providers: [

@@ -1,4 +1,4 @@
-export class Recipe {
+export class RecipeModel {
     constructor
       (
         public id: string,

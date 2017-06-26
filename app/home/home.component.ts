@@ -20,7 +20,11 @@ export class HomeComponent implements OnInit {
         this.message$ = <any>this.recipeService.getMessage();
     }
 
-     goToCategory(category: string){
+    goToCategory(category: string){
         this.router.navigate(["/recipes", category]);
+    }
+
+    goToSearch(){
+        this.router.navigate(["/search"]);
     }
 }

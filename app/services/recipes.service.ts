@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from "@angular/core";
-import { Recipe } from "../models/recipes";
+import { RecipeModel } from "../models/recipes";
 import firebase = require("nativescript-plugin-firebase");
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -11,8 +11,8 @@ export class RecipesService {
     private ngZone: NgZone,
   ) { }
 
-  recipes: BehaviorSubject<Array<Recipe>> = new BehaviorSubject([]);
-  private _allRecipes: Array<Recipe> = [];
+  recipes: BehaviorSubject<Array<RecipeModel>> = new BehaviorSubject([]);
+  private _allRecipes: Array<RecipeModel> = [];
 
   getRecipes(category: string): Observable<any> {
     return new Observable((observer: any) => {

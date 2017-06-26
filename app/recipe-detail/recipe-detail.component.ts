@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, OnInit, NgZone} from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { Recipe } from "../models/recipes";
+//import { RecipeModel } from "../models/recipes";
 import { RecipesService } from "../services/recipes.service";
 import { SegmentedBarItem } from "ui/segmented-bar";
 import { TNSTextToSpeech, SpeakOptions } from 'nativescript-texttospeech';
@@ -12,7 +12,7 @@ import { TNSFontIconService } from 'nativescript-ngx-fonticon';
     templateUrl: "./recipe-detail.component.html"
 })
 export class RecipeDetailComponent implements OnInit {
-    recipe: Recipe;
+    //recipe: RecipeModel;
     private sub: any;
     id: string;
     isSpeaking: boolean = false;
