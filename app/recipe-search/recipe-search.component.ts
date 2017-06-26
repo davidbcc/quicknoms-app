@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, NgZone } from "@angular/core";
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Router, ActivatedRoute } from "@angular/router";
@@ -13,21 +13,27 @@ var index = client.initIndex("recipes");
 })
 export class RecipeSearchComponent {
 
-    recipes$: Observable<any>;
+    recipes: Array<any> = [];
                 
     
-    constructor(private router: Router) {}
+    constructor(private router: Router, private ngZone: NgZone) {}
 
     public search(e: any) {
+        //clear
+        this.recipes = [];
         if (e && e.object) {
             index.search(e.object.text, (results, errors) => {
                 for (let id in results.hits) {
                     let result = (<any>Object).assign({Name: results.hits[id].Name, Image: results.hits[id].Image});
-                        this.recipes$.subscribe(result);
-                }
-            })
-            
+                        this.ngZone.run(() => {
+                             this.recipes.push(result);
+                        })                        
+                       
+                    }
+                })
+                
             }
+            
         }
 }
  
