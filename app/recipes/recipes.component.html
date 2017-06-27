@@ -3,7 +3,7 @@
 </ActionBar>
 <ScrollView class="green">
     <WrapLayout horizontalAlignment="center">      
-        <StackLayout style="margin-left: 10" class="card" width="45%" *ngFor="let recipe of recipesArray">
+        <StackLayout style="margin-left: 10" class="card" width="45%" *ngFor="let recipe of (recipes$ | async)">
             <StackLayout horizontalAlignment="center" (tap)="goToRecipe(recipe.id)">
                 <Image [src]="recipe.Image"></Image>            
                 <Label class="name" horizontalAlignment="center" textWrap="true" [text]="recipe.Name"></Label>

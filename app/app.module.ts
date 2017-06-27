@@ -12,6 +12,19 @@ import { RecipeSearchComponent } from "./recipe-search/recipe-search.component";
 
 import {TNSFontIconModule, TNSFontIconService, TNSFontIconPipe, TNSFontIconPurePipe} from 'nativescript-ngx-fonticon';
 
+import firebase = require("nativescript-plugin-firebase");
+firebase.init({
+  //persist: true
+  // Optionally pass in properties for database, authentication and cloud messaging,
+  // see their respective docs.
+}).then(
+  (instance) => {
+    console.log("firebase.init done");
+  },
+  (error) => {
+    console.log("firebase.init error: " + error);
+  }
+);
 @NgModule({
     bootstrap: [
         AppComponent

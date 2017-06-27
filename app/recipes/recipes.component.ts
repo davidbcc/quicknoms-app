@@ -50,14 +50,10 @@ export class RecipesComponent implements OnInit {
                     break;
                 default : "Recipes";
                 }
-                //return false
-                //}
-                //return true
-            //}
         })
     }
 
-     goToRecipe(id: string){
+    goToRecipe(id: string){
         this.router.navigate(["/recipe", id]);
     }
 }
