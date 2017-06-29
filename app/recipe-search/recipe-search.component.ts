@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import {Algolia} from "nativescript-algolia";
 var client = new Algolia('WZGM0BRSDB', '8f69d6ada2d9c2040176b1941c675887');
 var index = client.initIndex("recipes");
+import { LoadingIndicator } from "nativescript-loading-indicator";
 
 @Component({
     selector: "recipesearch",
@@ -16,8 +17,11 @@ export class RecipeSearchComponent {
     recipes: Array<any> = [];
     
     constructor(private router: Router, private ngZone: NgZone) {}
+    loader = new LoadingIndicator();
+
 
     search(e: any) {
+        this.loader.show({ message: 'Finding recipes...' });
         //clear
         this.recipes = [];
         if (e && e.object) {
@@ -27,10 +31,15 @@ export class RecipeSearchComponent {
                         this.ngZone.run(() => {
                              this.recipes.push(result);
                         })                        
-                       
+                      this.loader.hide();
                     }
                 })
-                
+            
+            
+            }
+            else {
+                alert("Sorry, no recipes found!");
+                this.loader.hide();
             }
             
     }

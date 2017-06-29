@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "~4.1.0",
     "@angular/router": "~4.1.0",
     "nativescript-algolia": "0.0.1",
+    "nativescript-loading-indicator": "^2.3.2",
     "nativescript-angular": "3.0.0",
     "nativescript-ngx-fonticon": "~2.2.1",
     "nativescript-plugin-firebase": "^4.0.2",
@@ -33,6 +34,10 @@
     "zone.js": "~0.8.2"
   },
   "devDependencies": {
+    "babel-traverse": "6.25.0",
+    "babel-types": "6.25.0",
+    "babylon": "6.17.4",
+    "lazy": "1.0.11",
     "nativescript-dev-typescript": "~0.4.0",
     "typescript": "~2.2.1"
   }

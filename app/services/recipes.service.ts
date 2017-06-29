@@ -4,6 +4,8 @@ import firebase = require("nativescript-plugin-firebase");
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/share';
+import { LoadingIndicator } from "nativescript-loading-indicator";
+
 
 @Injectable()
 export class RecipesService {
@@ -13,10 +15,12 @@ export class RecipesService {
 
   recipes: BehaviorSubject<Array<RecipeModel>> = new BehaviorSubject([]);
   private _allRecipes: Array<RecipeModel> = [];
+  loader = new LoadingIndicator();
 
   getRecipes(category: string): Observable<any> {
     return new Observable((observer: any) => {
       let path = 'Recipes';
+      this.loader.show({ message: 'Getting recipes...' });
 
       let onValueEvent = (snapshot: any) => {
         this.ngZone.run(() => {
@@ -30,7 +34,16 @@ export class RecipesService {
 
   getRecipe(id: string): Observable<any> {
     return new Observable((observer: any) => {
-      observer.next(this._allRecipes.filter(s => s.id === id)[0]);
+      let path = 'Recipes/'+id+'';
+      this.loader.show({ message: 'Getting recipe...' });
+
+      let onValueEvent = (snapshot: any) => {
+        this.ngZone.run(() => {
+          let results = this.handleSingleSnapshot(snapshot.value);
+          observer.next(results[0]);
+        });
+      };
+      firebase.addValueEventListener(onValueEvent, `/${path}`);
     }).share();
   }
 
@@ -45,6 +58,16 @@ export class RecipesService {
         }
       }
       this.publishUpdates();
+    }
+    return this._allRecipes;
+  }
+
+  handleSingleSnapshot(data: any) {
+    //empty array, then refill and filter
+    this._allRecipes = [];
+    if (data) {
+      this._allRecipes.push(data);
+      this.loader.hide();
     }
     return this._allRecipes;
   }
@@ -76,6 +99,7 @@ export class RecipesService {
       return 0;
     })
     this.recipes.next([...this._allRecipes]);
+    this.loader.hide();
   }
 
 }

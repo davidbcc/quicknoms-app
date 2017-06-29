@@ -73,6 +73,10 @@ ActionBar {
     background-color: orange;
 }
 
+.brown {
+    background-color: #650100;
+}
+
 /*specifics*/
 
 .btnSpeak {
