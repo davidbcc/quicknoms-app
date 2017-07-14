@@ -34,6 +34,10 @@ ActionBar {
     font-size: 10;
 }
 
+.highlight {
+    background-color: yellow;
+}
+
 /* cards */
 
 .card {

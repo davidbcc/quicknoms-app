@@ -2,7 +2,7 @@
 
 <StackLayout class="green">
     <SearchBar #SearchBar (submit)="search($event)"></SearchBar>
-    <ScrollView>
+    <ScrollView height="87%">
         <WrapLayout horizontalAlignment="center">      
             <StackLayout style="margin-left: 10" class="card" width="45%" *ngFor="let recipe of recipes">
                 <StackLayout horizontalAlignment="center" (tap)="goToRecipe(recipe.id)">
@@ -12,4 +12,7 @@
             </StackLayout>           
         </WrapLayout> 
     </ScrollView>
+    
+    <Image src="~/images/search-by-algolia.png" style="margin:5;width:200"></Image>
+    
 </StackLayout>

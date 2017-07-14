@@ -15,7 +15,9 @@ export class RecipeDetailComponent implements OnInit {
     //recipe: RecipeModel;
     private sub: any;
     id: string;
+    term: string;
     isSpeaking: boolean = false;
+    isHighlighted: boolean = false;
     visibility: string;
     name: string;
     notes: string;
@@ -26,6 +28,8 @@ export class RecipeDetailComponent implements OnInit {
     recipeSteps: Array<any>;
     public procedure: string;
     private TTS: TNSTextToSpeech;
+    private content: string;
+    public query: string;
 
     constructor(
         private recipeService: RecipesService,
@@ -47,6 +51,7 @@ export class RecipeDetailComponent implements OnInit {
     ngOnInit() {
         this.sub = this.route.params.subscribe((params: any) => {
             this.id = params['id'];
+            this.term = params['term'];
             this.recipeService.getRecipe(this.id).subscribe((recipe) => {
                 this.ngZone.run(() => {
                 for (let prop in recipe) {
@@ -78,6 +83,15 @@ export class RecipeDetailComponent implements OnInit {
             });
         });  
     }
+
+   /*public highlight() {
+        if(!this.query) {
+            return this.content;
+        }
+        return this.content.replace(new RegExp(this.query, 'egg'), match => {
+            return 'yellow';
+        });
+    }*/
 
     changeTab(id: number){
 

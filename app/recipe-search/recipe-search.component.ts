@@ -15,6 +15,7 @@ import { LoadingIndicator } from "nativescript-loading-indicator";
 export class RecipeSearchComponent {
 
     recipes: Array<any> = [];
+    term: string;
     
     constructor(private router: Router, private ngZone: NgZone) {}
     loader = new LoadingIndicator();
@@ -24,8 +25,10 @@ export class RecipeSearchComponent {
         this.loader.show({ message: 'Finding recipes...' });
         //clear
         this.recipes = [];
+        this.term = "";
         if (e && e.object) {
-            index.search(e.object.text, (results, errors) => {
+            this.term = e.object.text;
+            index.search(this.term, (results, errors) => {
                 for (let id in results.hits) {
                     let result = (<any>Object).assign({id: results.hits[id].objectID, Name: results.hits[id].Name, Image: results.hits[id].Image});
                         this.ngZone.run(() => {
@@ -45,7 +48,10 @@ export class RecipeSearchComponent {
     }
     
     goToRecipe(id: string){
-        this.router.navigate(["/recipe", id]);
+        let navigationExtras = {
+            queryParams: { 'term': this.term }
+        }
+        this.router.navigate(["/recipe", id], navigationExtras);
     }
 }
  

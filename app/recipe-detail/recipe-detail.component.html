@@ -6,7 +6,12 @@
             <SegmentedBar class="bar" borderColor="#8AC215" selectedBackgroundColor="#8AC215" #sb [items]="recipeSteps" selectedIndex="0" (selectedIndexChange)="changeTab(sb.selectedIndex)"></SegmentedBar>
             <StackLayout verticalAlignment="top">
                 <ScrollView height="75%" verticalAlignment="top">
-                    <Label class="name" verticalAlignment="top" horizontalAlignment="left" textWrap="true" [text]="procedure"></Label>
+                    <!--<Label class="name" (backgroundColor)=highlight() verticalAlignment="top" horizontalAlignment="left" textWrap="true" [text]="procedure"></Label>-->
+                    <Label verticalAlignment="top" horizontalAlignment="left" textWrap="true">
+                        <FormattedString>
+                            <Span class="name" [text]="procedure"></Span>
+                        </FormattedString>
+                    </Label>
                 </ScrollView>
                 <StackLayout height="25%" verticalAlignment="center">
                     <Button [text]="'fa-bullhorn' | fonticon" [class]="isSpeaking ? 'green pulse fa fa-bullhorn btnSpeak' : 'orange fa fa-bullhorn btnSpeak'"
